@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>智能电商业务运营系统</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../plugins/select2/select2.min.css">
+  <!--引入ztree css-->
+  <link href="../../dist/css/ztreecss/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <style type="text/css">
+  .btn{ padding: 1px 3px;}
+    .select2{width:404px;}
+  /*ztree 树样式重调*/
+  .ztree * {
+    /*padding: 0;*/
+    margin: 0;
+    font-size: 18px;
+    font-family:"宋体","黑体","微软雅黑";
+  }
+  .ztree {
+    margin: 0;
+    padding: 0 5px 5px;
+    color: #333;
+  }
+  .ztree li a.curSelectedNode {
+    padding-top: 0px;
+    background-color:#fff;
+    color: #3c8dbc;
+    height: 26px;
+    border:0;
+    border-top: 1px solid #fff;;
+    opacity: 1;
+  }
+  .ztree li a {
+    height: 26px;
+    vertical-align: middle;
+  }
+  .ztree li span {
+    line-height: 26px;
+    margin-right: 5px;
+  }
+    /*增加项目模态框*/
+    .modal-title2,.add-modal-duty,.modal-save{display:none;}
+    .template-name{margin:10px 0;}
+  </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../../index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>IeCOS</b></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>智能电商运营系统</b></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        项目
+        <small>advanced tables</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a href="#">主任务</a></li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="row">
+
+        <div class="col-xs-12">
+
+
+          <div class="box">
+            <!-- <div class="box-header">
+              <h3 class="box-title">Data Table With Full Features</h3>
+            </div> -->
+            <!-- /.box-header -->
+            <div class="box-body">
+
+              <div class="row-fluid"  id="div-advanced-search">
+                    <form class="form-inline well"  role="form">
+                      <!-- <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="status-search">所属部门:</label>
+                        <select class="input-small" id="status-search" style="width:162px;height:34px;border:1px solid #d2d6de;">
+                            <option value ="">猫超部</option>
+                            <option value ="0">＋＋运营组</option>
+                            <option value ="1">＋＋＋＋品牌A组</option>
+                            <option value ="1">＋＋＋＋品牌B组</option>
+                            <option value ="0">＋＋采购组</option>
+                            <option value ="0">＋＋美工组</option>
+                        </select>
+                      </div>
+                      <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="content-search">负&nbsp;&nbsp;责&nbsp;&nbsp;人&nbsp;:</label>
+                          <input type="text" class="form-control"  id="content-search" placeholder="负责人" style="width:161px;">
+                      </div> -->
+                      <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="status-search">项目分类:</label>
+                        <select class="input-small" id="status-search" style="width:162px;height:34px;border:1px solid #d2d6de;">
+                            <option value ="">全部</option>
+                            <option value ="">日常运营</option>
+                            <option value ="0">报活动</option>
+                            <option value ="1">其他</option>
+                        </select>
+                      </div>
+                      <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="content-search">项目名称:</label>
+                          <input type="text" class="form-control" id="content-search" placeholder="任务名称" style="width:161px;">
+                      </div>
+                      <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="createdtime-search">开始日期:</label>
+                          <input type="date" class="form-control" id="createdtime-search" placeholder="创建日期">
+                      </div>
+                      <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="endtime-search">结束日期:</label>
+                          <input type="date" class="form-control" id="endtime-search" placeholder="结束日期">
+                      </div>
+                      <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="status-search">重要程度:</label>
+                        <select class="input-small" id="status-search" style="width:162px;height:34px;border:1px solid #d2d6de;">
+                            <option value ="">全部</option>
+                            <option value="0">正常</option>
+                            <option value ="1">重要</option>
+                            <option value ="1">紧急</option>
+                            <option value ="1">重要且紧急</option>
+                        </select>
+                      </div>
+                      <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="status-search">项目状态:</label>
+                        <select class="input-small" id="status-search" style="width:162px;height:34px;border:1px solid #d2d6de;">
+                            <option value ="">全部</option>
+                            <option value="0">未开始</option>
+                            <option value="1" selected>执行中</option>
+                            <option value="1">已结束</option>
+                            <option value="1">已中止</option>
+                        </select>
+                      </div>
+                      <div class="form-group" style="margin-right: 10px">
+                        <button type="button" class="btn" id="btn-advanced-search"><i class="fa fa-search"></i> 查询</button>
+                      </div>
+                  </form>
+                  <!-- <button type="button" class="btn bg-olive ">添加项目</button> -->
+        <button type="button" class="btn btn-lg btn-success" style="position:absolute;right:300px;z-index:100;"  data-toggle="modal" data-target="#addDuty" id="addDutyBtn">创建项目</button>
+              </div>
+
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>负责人</th>
+                  <th>项目分类</th>
+                  <th>项目名称</th>
+                  <th>开始-截止</th>
+                  <th>完成时间</th>
+                  <th>完成度</th>
+                  <th>状态</th>
+                  <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>郭军</td>
+                  <td>日常运营</td>
+                  <td><a href="projectSolutions.html">猫超201612月份运营</a><!-- 
+                    <button type="button" class="btn bg-olive ">说明</button> --></td>
+                  <td>11-23 ~ 11-23 </td>
+                  <td>～</td>
+                  <td>0%</td>
+                  <td>未开始</td>
+                  <td>
+                    <button type="button" class="btn">敦促</button></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>程学根</td>
+                  <td>技术研发</td>
+                  <td><a href="projectSolutions.html">村淘合伙人会员积分系统V2.1</a></td>
+                  <td>11-23 ~ 11-23 </td>
+                  <td>～</td>
+                  <td>0%</td>
+                  <td>执行中</td>
+                  <td>
+                    <button type="button" class="btn">指导</button></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>程学根</td>
+                  <td>技术研发</td>
+                  <td><a href="projectSolutions.html">微分销&旺店通数据打通</a></td>
+                  <td>11-22 ~ 11-22 </td>
+                  <td>11-22 14:33:55</td>
+                  <td>100%</td>
+                  <td>已完成</td>
+                  <td>
+                    <button type="button" class="btn">总结</button></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>郭健</td>
+                  <td>日常运营</td>
+                  <td><a href="projectSolutions.html">村淘合伙人会员积分系统运营第一阶段</a></td>
+                  <td>11-22 ~ 11-22 </td>
+                  <td>~</td>
+                  <td>~</td>
+                  <td>已中止</td>
+                  <td>
+                    <button type="button" class="btn">追因</button></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.3.6
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="http://www.runhemei.com" target="_blank">北京润合美</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  
+</div>
+<!-- ./wrapper -->
+<!--modal 添加项目-->
+<div class="modal fade" id="addDuty">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title modal-title1">创建项目</h4>
+        <h4 class="modal-title modal-title2">选择SOP模板/职责</h4>
+      </div>
+      <div class="modal-body">
+           <div class="add-form clearfix">
+             <p class="col-md-12">
+               <span class="col-md-3" style="line-height:32px;text-align:right;">项目名称：</span>
+               <input class="col-md-9" placeholder="项目名称" style="height:32px;">
+             </p>
+             <p class="col-md-12">
+               <span class="col-md-3" style="line-height:32px;text-align:right;">可见范围：</span>
+               <select class="col-md-9" style="height:32px;">
+                 <option>私有：只有加入的成员才能看见此项目</option>
+                 <option>公有：所有成员都能看见此项目</option>
+               </select>
+             </p>
+             <p class="col-md-6" style="margin-left:29px;">
+               <span class="col-md-5" style="line-height:32px;text-align:right;">项目经理：</span>
+               <select class="col-md-6" style="height:32px;">
+                 <option>弹出框查找&选择</option>
+                 <!-- <option>刘德华</option>
+                 <option>关威</option>
+                 <option>楚士通</option> -->
+               </select>
+             </p>
+             <p class="col-md-5" style="margin-left:18px;">
+               <span class="col-md-5" style="line-height:32px;text-align:right;">重要性：</span>
+               <select class="col-md-7" style="height:32px;">
+                 <option>高</option>
+                 <option>中</option>
+                 <option>低</option>
+               </select>
+             </p>
+             <p class="col-md-12">
+               <span class="col-md-3" style="line-height:32px;text-align:right;">项目分类：</span>
+               <select class="col-md-4" style="height:32px;">
+                 <option>前端开发</option>
+                 <option>后端开发</option>
+                 <option>美工设计</option>
+               </select>
+             </p>
+             <p class="col-md-12">
+               <span class="col-md-3" style="line-height:32px;text-align:right;">开始结束时间：</span>
+               <input class="col-md-4"  id="reservation" style="height:32px;" type="text">
+             </p>
+             <p class="col-md-12">
+               <span class="col-md-3" style="line-height:32px;text-align:right;">项目核心成员：</span>
+               <select class="col-md-9 form-control select2" multiple="multiple" style="height:32px;">
+                 <option>程学根</option>
+                 <option>刘德华</option>
+                 <option>关威</option>
+                 <option>楚士通</option>
+               </select>
+             </p>
+             <p class="col-md-12">
+               <span class="col-md-3" style="line-height:32px;text-align:right;">项目描述：</span>
+               <textarea class="col-md-9" placeholder="给项目写点描述" style="resize:none;min-height:60px;"></textarea>
+             </p>
+           </div>
+           <div class="add-modal-duty clearfix">
+             <div style="width:180px;margin:10px auto 20px;">
+               <button class="btn btn-success" data-toggle="modal" data-target="#selectTemplate ">选择SOP模板</button> or 
+               <button class="btn btn-primary pull-right" data-toggle="modal"id="selectDutyBtn" data-target="#selectDuty">选择职责</button>
+             </div>
+             <div class="template-name clearfix" id="templateName">
+               <span class="col-md-3" style="text-align:right;">已选模板：</span>
+               <span class="template-name1 col-md-5">标准项目开发模板2016-11</span>
+               <span class="col-md-2" style="text-align:right;">创建人：</span>
+               <span class="template-name1 col-md-2">程学根</span>
+               <!-- <p style="margin:20px 0 20px;float:left;width:100%;">
+                 <span class="col-md-2" style="text-align:right;">描述：</span><span class="template-name1 col-md-8">
+               </span>
+               </p> -->
+             </div>
+             <p class="col-md-3" style="text-align:right;">职责大纲：</p><br>
+             <div class="col-md-5" id="dutyOutline">技术研发</div>
+             <div class="col-md-4" id="dutyOutline">负责人：程学根［选择］</div>
+           </div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-set">
+          <button type="button" class="btn btn-primary setep">下一步</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        </div>
+        <div class="modal-save">
+          <button type="button" class="btn btn-primary">保存</button>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+</div>
+<!--modal 选择模板-->
+<div class="modal fade" id="selectTemplate">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">选择模板</h4>
+      </div>
+      <div class="modal-body clearfix">
+         <table id="tableexample" class="table table-bordered table-striped">
+           <thead>
+           <tr>
+             <th></th>
+             <th>名称</th>
+             <th>创建人</th>
+             <th>描述</th>
+           </tr>
+           </thead>
+           <tbody>
+           <tr>
+             <td><input type="radio" name="template"> </td>
+             <td>开发1</td>
+             <td>楚士通</td>
+             <td>这是开发1</td>
+           </tr>
+           <tr>
+             <td><input type="radio" name="template"> </td>
+             <td>开发2</td>
+             <td>楚士通</td>
+             <td>这是开发2</td>
+           </tr>
+           <tr>
+             <td><input type="radio" name="template"> </td>
+             <td>开发3</td>
+             <td>楚士通</td>
+             <td>这是开发3</td>
+           </tr>
+           <tr>
+             <td><input type="radio" name="template"> </td>
+             <td>开发4</td>
+             <td>楚士通</td>
+             <td>这是开发4</td>
+           </tr>
+           </tbody>
+         </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="template-ensure" data-dismiss="modal">确定</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+</div>
+<!--modal 选择职责-->
+<div class="modal fade" id="selectDuty">
+  <div class="modal-dialog" style="width:300px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">选择职责</h4>
+      </div>
+      <div class="modal-body">
+        <ul id="treeDemo" class="ztree" style="margin-left:50px;"></ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="duty-ensure" data-dismiss="modal">确定</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+</div>
+<!-- jQuery 2.2.3 -->
+<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!--aside.js-->
+<script src="../../dist/js/aside.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="../../plugins/select2/select2.full.min.js"></script>
+<!-- DataTables -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../plugins/fastclick/fastclick.js"></script>
+<!-- date-range-picker -->
+<script src="../../plugins/daterangepicker/moment.min.js"></script>
+<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+<!--引入ztree js 文件-->
+<script src="../../dist/js/jquery.ztree.core.min.js"></script>
+<script src="../../dist/js/jquery.ztree.excheck.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    (function(){
+//      增加项目模态框
+      var addDuty=$('#addDuty');
+      var modalTitle1=addDuty.find('h4.modal-title1');
+      var modalTitle2=addDuty.find('h4.modal-title2');
+      var addForm=addDuty.find('div.add-form');
+      var addModalDuty=addDuty.find('div.add-modal-duty');
+      var modalSet=addDuty.find('div.modal-set');
+      var modalSave=addDuty.find('div.modal-save');
+//      添加项目按钮
+      $('#addDutyBtn').click(function(){
+        modalTitle1.show();
+        addForm.show();
+        modalSet.show();
+        modalTitle2.hide();
+        addModalDuty.hide();
+        modalSave.hide();
+      });
+//      下一步
+      $('button.setep').click(function(){
+        modalTitle1.hide();
+        addForm.hide();
+        modalSet.hide();
+        modalTitle2.show();
+        addModalDuty.show();
+        modalSave.show();
+      });
+      /*选择模板模态框*/
+//      点击确定 添加模板
+      var aInput=$('#tableexample').find('input');
+      $('#template-ensure').click(function(){
+          var templateNameId=$('#templateName').find('span.template-name1');
+          templateNameId.eq(0).text('');
+          templateNameId.eq(1).text('');
+          templateNameId.eq(2).text('');
+          for(var i=0;i<aInput.length;i++){
+              if(aInput[i].checked){
+                var sib=aInput.eq(i).parent().siblings();
+                templateNameId.eq(0).text(sib.eq(0).text());
+                templateNameId.eq(1).text(sib.eq(1).text());
+                templateNameId.eq(2).text(sib.eq(2).text());
+              }
+          }
+      });
+
+      //      ztree初始化
+      (function(){
+        var setting = {
+          treeObj:null,
+          view:{
+            showIcon:false,
+          },
+          check:{
+            autoCheckTrigger:false,
+            chkboxType:{"Y":"ps","N":"ps"},
+            chkStyle:"checkbox",
+            enable:true,
+            nocheckInherit:false,
+            chkDisabledInherit:false,
+            radioType:'level'
+          }
+        };
+
+        var zNodes = [
+          {
+//                    nocheck:false,
+//                    checked:true,//选择多选框 zNodes.nocheck=false&& zNodes.enable=true时生效
+            name: "猫超业务",
+            open: false,
+            url:"#",
+            children:[
+              {
+                name:"采购类",
+                open:false,
+                isParent:true,
+                children:[
+                  {name:"品牌对接"},
+                  {name:"猫超对接"},
+                  {name:"海格对接"},
+                  {name:"物流对接"},
+                  {name:"技术对接"},
+                  {name:"财务对接"}
+                ]
+              }
+            ]
+          },
+          {
+            name: "技术服务",
+            open: false,
+            url:"#",
+            children: [
+              {name:"需求分析"},
+              {name:"系统设计"},
+              {name:"前端开发"},
+              {name:"后端开发"},
+              {name:"测试修改"},
+              {name:"运维修改"}
+            ]
+          }
+
+        ];
+        var zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+//        点击选择职责按钮时初始化
+        $('#selectDutyBtn').click(function(){
+          zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        });
+        //      点击确定 添加职责
+        $('#duty-ensure').click(function(){
+          var nodes=zTreeObj.getCheckedNodes('true');
+          var str='';
+          for(var i=0;i<nodes.length;i++){
+            str+='<p style="margin-left:'+ nodes[i].level*15+'px">'+ nodes[i].name+'</p>'
+          }
+          $('#dutyOutline').empty().append(str);
+        });
+      })();
+    })();
+    //$("#example2").DataTable();
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": false,
+      "autoWidth": true
+    });
+//    日期选择
+    $('#reservation').daterangepicker(
+      {
+        format: 'YYYY-MM-DD',
+        locale:{
+          applyLabel: '确认',
+          cancelLabel: '取消',
+          fromLabel: '从',
+          toLabel: '到',
+          weekLabel: 'W',
+          customRangeLabel: '选择时间',
+          daysOfWeek:["日","一","二","三","四","五","六"],
+          monthNames: ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
+        }
+      },function(start, end, label) {
+         $('#reservation').val(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
+       }
+    );
+//    多选框
+    $(".select2").select2();
+//    选择模板列表模态框
+    $('#tableexample').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": false,
+      "info": true,
+      "autoWidth": true
+    });
+  });
+</script>
+</body>
+</html>

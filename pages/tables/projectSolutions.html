@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>智能电商业务运营系统</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap.css">
+    <!--datepicker-->
+    <link rel="stylesheet" href="../../plugins/datepicker/datepicker3.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="../../plugins/select2/select2.min.css">
+    <!--引入ztree css-->
+    <link href="../../dist/css/ztreecss/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        ul{padding:0;margin:0;}
+        li{list-style:none;}
+        .clearfix:after{zoom:1;}
+        .clearfix{content:'';display:block;clear:both;}
+        .main-leve1{width:280px;background:#ebeaeb;display:inline-block;margin:0 8px;border-radius:6px;vertical-align: top;font-size:16px;}
+        .main-level-wrap{padding:0 8px;color:#333;}
+        .main-level-wrap .main-level-header{height:60px;}
+        .main-level-header .main-level-header-left{float:left;width:201px;}
+        .main-level-header .header-left-text{padding-top:4px;line-height:36px;height:36px;}
+        .main-level-header .header-left-bar{margin:0 auto;height:10px;background:#d0cdd2;border-radius:5px;display:block;width:205px;position:relative;}
+        .main-level-header .header-left-bar::after{content:'';position:absolute;top:0;left:0;width:50px;height:10px;border-radius:5px;background:#40ca99;}
+        .main-level-header .main-level-header-right{float:right;padding-top:30px;}
+        .main-level-header .herder-right-hcolor{color:#69d0d5;}
+        .main-level-body .main-level-body-item{min-height:80px;border-radius:4px;background:#fff;margin-bottom:8px;cursor:pointer;position:relative;}
+        .main-level-body-item .body-item-text{width:226px;margin:5px 5px 5px 15px;}
+        .body-item>span{display:inline-block;margin:0 5px;}
+        .body-item>span:first-child{background:#ff9696;padding:2px 5px;border-radius:4px;}
+        .body-item>span img{width:20px;height:20px;}
+        .body-item>span:nth-child(3){font-size:14px;color:#b6b6b6;}
+        .body-item>span:nth-child(4){position:absolute;right:10px;bottom:10px;}
+        .body-item>span:nth-child(4) img{width:30px;height:30px;}
+        /*新建*/
+        .main-level-new{padding:10px;text-align:center;}
+        .main-level-new-color{display:block;height:32px;color:#8f8f8f;line-height:32px;}
+        .main-level-new-color:hover{color:#696969;}
+         .footer-bg{font-size:26px;padding-right:3px;vertical-align: top;}
+        /*A营销模态框*/
+        .amarketing{width:900px;background:#fff;position:relative;display: -webkit-flex; /* Safari */ display: flex;}
+        .close{position:absolute;right:10px;top:10px;}
+        .amarketing-left{flex:2 600px;}
+        .amarketing-right{background:#f8f8f8;flex:1 300px;}
+        /*左侧*/
+        .amarketing-left-header{height:60px;border-bottom:1px solid #f3f3f3;padding-left:24px;}
+        .amarketing-left-header .amarketing-plan{float:left;padding-top:12px;margin-right:10px;}
+        .amarketing-left-header .amarketing-plan p{font-size:12px;color:#cbd2d7;}
+        .amarketing-down{width:24px;height:20px;margin-top:18px;float:left;}
+        .amarketing-down .fa{font-size:20px;}
+        .amarketing-list{height:59px;padding:12px 10px 0 0;float:right;}
+
+        .amarketing-list .list{float:left;margin-left:15px;position:relative;}
+        .amarketing-list .list .nav-stacked{position:absolute;z-index:200;left:-150px;width:300px;background:#fff;box-shadow: 0 0 5px #333;display:none;}
+        .amarketing-list .list-a{width:30px;height:30px;}
+        .amarketing-title .title-check{width:70px;padding:22px 0 0 28px;float:left;}
+        .amarketing-title .title-text{width:510px;float:left;font-size:16px;line-height:26px;margin-top:16px;color:#2e2e2e;}
+        .amarketing-title .title-text .title-show{background:#f8f8f8;min-height:50px;overflow: auto;}
+        .amarketing-title .title-text .title-hide{display:none;}
+        .amarketing-title .title-text .title-hide .title-hide-text{width:100%;resize:none;height:130px;}
+        .title-people-date{height:46px;clear:both;padding-left:70px;padding-top:10px;}
+        .title-people-date .title-people{height:36px;width:120px;margin-right:132px;float:left;}
+        .assigntask{color:#4e5a67;border:none;width:70px;height:100%;outline: none;margin-left:5px;}
+        .border{border-top:1px solid #f3f3f3;margin:10px 0 0 70px;}
+        .addDescription{margin:30px 20px 0 0;}
+        .addDescription .add-text{color:#738398;display:block;}
+        .addDescription .add-main{display:none;}
+        .addDescription .add-textarea{height:110px;width:100%;resize:none;padding:10px;}
+
+        .amarketing-botom{margin:20px 0 50px;;}
+        .amarket-bottom-left{float:left;width:70px;padding-left:20px;}
+        .amarket-bottom-right{float:left;width:510px;}
+        .amarket-bottom-right .label-item{height:28px;line-height:28px;margin:0 5px 5px 0;padding:0 20px 0 10px;display:inline-block;color:#fff;background:#40ca99;border-radius:4px;position:relative;}
+        .label-item i{position:absolute;right:5px;top:7px;display:none;}
+        .label-item:hover i{display:inline-block;}
+        .amarket-label .add-label{height:28px;line-height:28px;padding:0 10px;display:inline-block;color:#7c8798;}
+        .amarket-partake{margin-top:10px;}
+        .amarket-partake .partake-img{display:inline-block;width:40px;height:40px;margin-right:5px;position:relative;}
+        .amarket-partake .partake-img i{position:absolute;top:-3px;right:-3px;border-radius:50%;background:#c3c3c3;color:#fff;width:14px;height:14px;text-align:center;display:none;}
+        .amarket-partake .partake-img:hover i{display:block;}
+        .amarket-partake .add-partake{display:inline-block;}
+        /*子任务*/
+        .amarket-subtask{margin-top:10px;}
+        .subtask-bar{height:10px;background:#dddbde;border-radius:2px;margin-top:4px;width:510px;position:relative;}
+        .subtask-bar .sub-bar{content:'';height:10px;border-radius:2px;position:absolute;left:0;top:0;width:0;background:#69d0d1;}
+        .task-item{margin-top:8px;cursor:pointer;}
+        .task-item:hover{background:#f3f3f3;}
+        .task-item .task-item-wrapper{margin-bottom:3px;height:38px;}
+        .task-item .task-item-wrapper .task-item-check{width:36px;height:38px;float:left;}
+        .task-item .task-item-wrapper .task-check{display:inline-block;padding:10px 0 0 12px;}
+        .task-item .task-item-wrapper .task-item-title{float:left;width:327px;height:38px;line-height:38px;overflow:hidden;}
+        .task-item .task-item-wrapper .task-item-metadata{float:left;width:120px;height:38px;}
+        .task-item .task-item-wrapper .task-item-metadata .task-due{display:inline-block;line-height:38px;}
+        .task-item .task-item-wrapper .task-item-metadata .task-img{display:inline-block;}
+        .task-item .task-item-wrapper .task-item-go-icon{width:16px;float:left;height:30px;}
+        .task-item .task-item-wrapper .task-item-go-icon i{width:16px;height:22px;margin-top:8px;font-size:20px;}
+        .amarket-subtask .sub-task-new{display:inline-block;height:20px;margin-top:10px;color:#6f8092;}
+        .amarket-enclosure{margin-top:10px;}
+        .add-subtask{display:none;}
+        .add-subtask .subtask-text{height:40px;width:508px;border:1px solid #f3f3f3;resize:none;line-height:30px;font-size:18px;}
+        .sub-task-new2{display:inline-block;height:20px;margin-top:10px;color:#6f8092;}
+        .add-subtask2{display:none;}
+        .subtask-text2{height:40px;width:508px;border:1px solid #f3f3f3;resize:none;line-height:30px;font-size:18px;}
+        /*右侧*/
+         .amarketing-right .card-sidebar{padding:10px 15px 40px;}
+         .card-sidebar{margin:10px 0;}
+        .card-sidebar .task-num{color:#92a0ab;}
+        .card-sidebar .task-num i{margin-left:10px;color:#ff9898;}
+        .card-widget{margin:15px 0;}
+        .comment-item{margin:10px 0;}
+        .comment-item .comment-img{float:left;}
+        .comment-item .comment-meta{margin-left:42px;height:22px;position:relative;}
+        .comment-item .comment-meta .comment-user{color:#333;padding:0 5px;}
+        .comment-item .comment-meta .comment-remove{position:absolute;right:0;top:0;color:#c3c3c3;width:16px;height:22px;font-size:18px;display:none;}
+        .comment-item:hover .comment-meta .comment-remove{ display:block; }
+        .comment-item .comment-content{margin-left:42px;font-size:14px;margin-top:10px;}
+        .add-comment .comment-text{height:73px;resize:none;font-size:15px;padding:5px 10px;width:100%;border-radius:4px; background:#fbfbfb;border:1px solid #f3f3f3;}
+        .add-comment .comment-text:focus{background:#fff;}
+        /*项目详情*/
+        #projectDetails .col-md-12{border-bottom:1px solid #eee;padding:10px 0;}
+        /*组织机构*/
+        div.content-aside{padding-top:10px;}
+        div.content-aside ul{padding:0;margin:0; padding-left:20px; }
+        div.content-aside>ul{padding:0;margin:0;}
+        div.content-aside li{list-style:none;line-height:30px;}
+        div.content-aside li i{padding-right:5px;color:#3c8dbc;}
+        div.content-aside li a{display:inline-block;height:100%;}
+        ul.slide-nav{display:none;}
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+<header class="main-header">
+    <!-- Logo -->
+    <a href="../../index2.html" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>IeCOS</b></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>智能电商运营系统</b></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+
+
+    </nav>
+</header>
+<aside class="main-sidebar">
+
+</aside>
+<div class="content-wrapper" style="min-height:640px;background:#fff;overflow: hidden;">
+    <section class="content-header">
+        <h1>
+            项目：村淘合伙人会员积分系统V2.1
+            <small>执行中</small>
+            <button type="button" class="btn bg-olive" data-toggle="modal" data-target="#projectDetails">项目详情</button>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+            <li><a href="#">项目</a></li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <div class="col-md-2 content-aside" style="border-right:1px solid #ecf0f5;padding-bottom:2000px;margin-bottom:-2000px;min-width:185px;margin-top: 15px;
+    border-top: 3px solid #d2d6de;">
+        <ul>
+            <li>
+                <i class="fa fa-sitemap"></i> <a href="javascript:;">村淘合伙人会员积分系统</a>
+                <ul>
+                    <li>
+                        <i class="fa fa-plus-square-o slideToggle" data-status="true"></i>
+                        <i class="fa fa-user"></i><a href="javascript:;">需求梳理</a>
+                        <ul class="slide-nav">
+                            <li>
+                                <i class="fa fa-plus-square-o slideToggle" data-status="true"></i>
+                                <i class="fa fa-user"></i><a href="javascript:;">采购</a>
+                                <ul class="slide-nav">
+                                    <li>
+                                        <i class="fa fa-book"></i><a href="javascript:;">品牌对接</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa  fa-book"></i><a href="javascript:;">猫超对接</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa  fa-book"></i><a href="javascript:;">海格对接</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa  fa-book"></i><a href="javascript:;">物流对接</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa  fa-book"></i><a href="javascript:;">技术对接</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa  fa-book"></i><a href="javascript:;">财务对接</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <i class="fa fa-plus-square-o slideToggle" data-status="true"></i>
+                                <i class="fa fa-user"></i><a href="javascript:;">村淘</a>
+                                <ul class="slide-nav">
+                                    <li>
+                                        <i class="fa fa-book"></i><a href="javascript:;">活动设计</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <i class="fa fa-plus-square-o slideToggle" data-status='true'></i>
+                        <i class="fa fa-user"></i><a href="javascript:;">分销</a>
+                        <ul class="slide-nav">
+                            <li>
+                                <i class="fa fa-book"></i><a href="javascript:;">销售经理</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <i class="fa fa-plus-square-o slideToggle" data-status='true'></i>
+                        <i class="fa fa-user"></i><a href="javascript:;">技术研发</a>
+                        <ul class="slide-nav">
+                            <li>
+                                <i class="fa fa-book"></i><a href="javascript:;">需求分析</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-book"></i><a href="javascript:;">系统设计</a>
+                            </li>
+                            <!-- <li>
+                                <i class="fa fa-book"></i><a href="javascript:;">前端开发</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-book"></i><a href="javascript:;">后端开发</a>
+                            </li> -->
+                            <li>
+                                <i class="fa fa-book"></i><a href="javascript:;">测试修改</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-book"></i><a href="javascript:;">运维修改</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-book"></i><a href="javascript:;">团队管理</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-plus-square-o slideToggle" data-status='true'></i>
+                                <i class="fa fa-user"></i><a href="javascript:;">开发</a>
+                                <ul class="slide-nav">
+                                    <li>
+                                        <i class="fa fa-book"></i><a href="javascript:;">数据库设计</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-book"></i><a href="javascript:;">接口设计</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-book"></i><a href="javascript:;">模块开发</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <i class="fa fa-plus-square-o slideToggle" data-status='true'></i>
+                                <i class="fa fa-user"></i><a href="javascript:;">前端</a>
+                                <ul class="slide-nav">
+                                    <li>
+                                        <i class="fa fa-book"></i><a href="javascript:;">页面切图</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-book"></i><a href="javascript:;">页面交互</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-book"></i><a href="javascript:;">前后台交互</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <i class="fa fa-plus-square-o slideToggle" data-status='true'></i>
+                        <i class="fa fa-user"></i><a href="javascript:;">采购</a>
+                        <ul class="slide-nav">
+                            <li>
+                                <i class="fa fa-book"></i><a href="javascript:;">采购审核</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <section class="content col-md-10" style="padding-bottom:0;margin-top:15px;border-top:3px solid #d2d6de;">
+        <div class="content-box" style="overflow: auto;">
+            <div class="project-main" style="margin-right:50px;margin-top:10px;">
+                <div class="main-leve1">
+                    <div class="main-level-wrap">
+                        <div class="main-level-header">
+                            <div class="main-level-header-left">
+                                <span class="header-left-text">需求分析
+                                	<button type="button" class="btn bg-olive" style="padding:1px;float:right;">设置计划</button> </span>
+                                <span class="header-left-bar"></span>
+                            </div>
+                            <div class="main-level-header-right">
+                                <span class="herder-right-hcolor"><span class="header-right-complete">0</span>/</span><span class="header-right-all">3</span>
+                            </div>
+                        </div>
+                        <div class="main-level-body">
+                            <ul>
+                                <li class="main-level-body-item clearfix" data-toggle="modal" data-target="#markerting">
+                                    <p class="body-item-text">
+                                        需求调研1
+                                    </p>
+                                    <p class="body-item">
+                                        <span><i class="fa fa-clock-o"></i><span>10-23</span></span>
+                                        <span><img src="../../dist/img/project-amarking-pic1_07.jpg"/></span>
+                                        <span><img src="../../dist/img/project-amarking-pic1_03.jpg"/><span>1/1</span></span>
+                                        <span><img src="../../dist/img/project_pic1_07.jpg" width="40" height="40"></span>
+                                    </p>
+                                </li>
+                                <li class="main-level-body-item clearfix" data-toggle="modal" data-target="#markerting">
+                                    <p class="body-item-text">
+                                        需求分析
+                                    </p>
+                                    <p class="body-item">
+                                        <span><i class="fa fa-clock-o"></i><span>10-24</span></span>
+                                        <span><img src="../../dist/img/project-amarking-pic1_07.jpg"/></span>
+                                        <span><img src="../../dist/img/project-amarking-pic1_03.jpg"/><span>1/1</span></span>
+                                        <span><img src="../../dist/img/project_pic1_07.jpg" width="40" height="40"></span>
+                                    </p>
+                                </li>
+                                <li class="main-level-body-item clearfix" data-toggle="modal" data-target="#markerting">
+                                    <p class="body-item-text">
+                                        需求整理发布
+                                    </p>
+                                    <p class="body-item">
+                                        <span><i class="fa fa-clock-o"></i><span>10-25</span></span>
+                                        <span><img src="../../dist/img/project-amarking-pic1_07.jpg"/></span>
+                                        <span><img src="../../dist/img/project-amarking-pic1_03.jpg"/><span>1/1</span></span>
+                                        <span><img src="../../dist/img/project_pic1_07.jpg" width="40" height="40"></span>
+                                        <span><i class="fa fa-clock-o"></i></span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="main-level-footer"data-toggle="modal" data-target="#markerting">
+                            <a href="javascript:;" class="main-level-new-color"><span class="footer-bg">+</span>添加新任务／分组</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-leve1">
+                    <div class="main-level-wrap">
+                        <div class="main-level-header">
+                            <div class="main-level-header-left">
+                                <span class="header-left-text">系统设计</span>
+                                <span class="header-left-bar"></span>
+                            </div>
+                            <div class="main-level-header-right">
+                                <span class="herder-right-hcolor"><span class="header-right-complete">0</span>/</span><span class="header-right-all">3</span>
+                            </div>
+                        </div>
+                        <div class="main-level-body">
+                            <ul>
+                                <li class="main-level-body-item"></li>
+                                <li class="main-level-body-item"></li>
+                            </ul>
+                        </div>
+                        <div class="main-level-footer">
+                            <a href="javascript:;" class="main-level-new-color"><span class="footer-bg">+</span>添加新任务</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-leve1">
+                    <div class="main-level-wrap">
+                        <div class="main-level-header">
+                            <div class="main-level-header-left">
+                                <span class="header-left-text">前端开发</span>
+                                <span class="header-left-bar"></span>
+                            </div>
+                            <div class="main-level-header-right">
+                                <span class="herder-right-hcolor"><span class="header-right-complete">0</span>/</span><span class="header-right-all">3</span>
+                            </div>
+                        </div>
+                        <div class="main-level-body">
+                            <ul>
+                                <li class="main-level-body-item"></li>
+                                <li class="main-level-body-item"></li>
+                                <li class="main-level-body-item"></li>
+                            </ul>
+                        </div>
+                        <div class="main-level-footer">
+                            <a href="javascript:;" class="main-level-new-color"><span class="footer-bg">+</span>添加新任务</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-leve1">
+                    <div class="main-level-wrap">
+                        <div class="main-level-header">
+                            <div class="main-level-header-left">
+                                <span class="header-left-text">后端开发</span>
+                                <span class="header-left-bar"></span>
+                            </div>
+                            <div class="main-level-header-right">
+                                <span class="herder-right-hcolor"><span class="header-right-complete">0</span>/</span><span class="header-right-all">3</span>
+                            </div>
+                        </div>
+                        <div class="main-level-body">
+                            <ul>
+                                <li class="main-level-body-item"></li>
+                            </ul>
+                        </div>
+                        <div class="main-level-footer">
+                            <a href="javascript:;" class="main-level-new-color"><span class="footer-bg">+</span>添加新任务</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-leve1 add-new-list">
+                    <div class="main-level-new">
+                        <a href="javascript:;" class="main-level-new-color"><span class="footer-bg">+</span>选择职责</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!--modal 项目详情-->
+<div class="modal fade" id="projectDetails">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">村淘合伙人会员积分系统V2.1</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <!-- <p class="col-md-12">
+                    <span class="col-md-3" style="text-align:right;">项目名称：</span>
+                    <span class="col-md-9" style="height:32px;">系统分析</span>
+                </p> -->
+                <p class="col-md-12">
+                    <span class="col-md-3" style="text-align:right;">可见范围：</span>
+                    <span class="col-md-9">私有：只有加入的成员才能看见此项目</span>
+                </p>
+                <p class="col-md-12">
+                    <span class="col-md-3" style="text-align:right;">项目经理：</span>
+                    <span class="col-md-9">刘德华</span>
+                </p>
+                <p class="col-md-12">
+                    <span class="col-md-3" style="text-align:right;">项目核心成员：</span>
+                    <span class="col-md-9">刘德华，楚士通</span>
+                </p>
+                <p class="col-md-12">
+                    <span class="col-md-3" style="text-align:right;">项目分类：</span>
+                    <span class="col-md-9">前端开发</span>
+                </p>
+                <p class="col-md-12">
+                    <span class="col-md-3" style="text-align:right;">重要性：</span>
+                    <span class="col-md-9">高</span>
+                </p>
+                <p class="col-md-12">
+                    <span class="col-md-3" style="text-align:right;">开始结束时间：</span>
+                    <span class="col-md-9">2016-12-27--2016-12-18</span>
+                </p>
+                <p class="col-md-12">
+                    <span class="col-md-3" style="text-align:right;">项目描述：</span>
+                    <span class="col-md-9">这是系统分析的描述</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!--A营销计划弹框-->
+<div class="modal fade" id="markerting">
+    <div class="modal-dialog">
+        <div class="modal-content  amarketing">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="amarketing-left">
+                <div class="amarketing-left-header">
+                    <div class="amarketing-plan">
+                        <strong>村淘合伙人会员积分系统V2.1</strong>
+                        <p><i class="fa fa-user"></i><span>技术总监</span> >> <span>系统设计</span></p>
+                    </div>
+                    <div class="amarketing-down">
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <ul class="amarketing-list">
+                        <li class="list">
+                            <a href="javascript:;" class="list-a" title="分配子任务"><img src="../../dist/img/project-amarking-pic1_03.jpg"/></a>
+                        </li>
+                        <li class="list">
+                            <a href="javascript:;" class="list-a" title="设置计划"><img src="../../dist/img/project-amarking-pic1_05.jpg"/></a>
+                        </li>
+                        <li class="list">
+                            <a href="javascript:;" class="list-a" title="设置重要性"><img src="../../dist/img/project-amarking-pic1_07.jpg"/></a>
+                        </li>
+                        <li class="list" id="list-active">
+                            <a href="javascript:;" class="list-a"><img src="../../dist/img/project-amarking-pic1_09.jpg"/></a>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#"><i class="fa fa-inbox"></i> Inbox
+                                    </a></li>
+                                <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+                                <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
+                                <li><a href="#"><i class="fa fa-filter"></i> Junk </a>
+                                </li>
+                                <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="amarketing-title clearfix">
+                    <div class="amarket-bottom-left">父任务</div>
+                    <div class="amarket-bottom-right">积分系统需求分析</div>
+                </div>
+                <div class="amarketing-title clearfix">
+                    <div class="title-check"><input type="checkbox" class="title-check-input" /> </div>
+                    <div class="title-text">
+                        <div class="title-show" >
+                            需求调研1
+                        </div>
+                        <div class="title-hide">
+                            <textarea class="title-hide-text"></textarea>
+                            <button class="btn btn-primary title-hide-save">保存</button>
+                            <button class="btn btn-default title-hide-cancel">取消</button>
+                        </div>
+                    </div>
+                    <div class="title-people-date">
+                        <div class="title-people">
+                            <a href="javascript:;">
+                                <img src="../../dist/img/project_pic3_03.jpg"/>
+                                <span class="assigntask">责任人</span>
+                            </a>
+                        </div>
+                        <div class="title-people">
+                            <a href="javascript:;">
+                                <img src="../../dist/img/project_pic3_05.jpg"/>
+                                <input  class="assigntask datepicker1" placeholder="截止日期">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="border"></div>
+                </div>
+                <div class="addDescription clearfix">
+                    <div class="amarket-bottom-left">描述</div>
+                    <div class="amarket-bottom-right">
+                        <a href="javascript:;" class="add-text">添加描述</a>
+                        <div class="add-main">
+                            <textarea class="add-textarea" placeholder="输入内容....."></textarea>
+                            <button class="btn btn-success add-btn-enter">确定</button>
+                            <button class="btn btn-default add-btn-cancel">取消 </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="amarketing-botom">
+                    <div class="amarket-label clearfix">
+                        <div class="amarket-bottom-left">标签</div>
+                        <div class="amarket-bottom-right">
+                            <a href="javascaript:;" class="label-item"><span class="label-text">重要</span><i class="fa fa-close label-item-i"></i></a>
+                            <a href="javascaript:;" class="label-item"><span class="label-text">重要紧急</span><i class="fa fa-close label-item-i"></i></a>
+                            <a href="javascaript:;" class="add-label">添加标签</a>
+                        </div>
+                    </div>
+                    <div class="amarket-label clearfix">
+                        <div class="amarket-bottom-left">参与人岗位</div>
+                        <div class="amarket-bottom-right">
+                            <a href="javascaript:;" class="label-item"><span class="label-text">主管</span><i class="fa fa-close label-item-i"></i></a>
+                            <a href="javascaript:;" class="label-item"><span class="label-text">专员</span><i class="fa fa-close label-item-i"></i></a>
+                            <a href="javascaript:;" class="add-label">添加新岗位</a>
+                        </div>
+                    </div>
+                    <div class="amarket-partake clearfix">
+                        <div class="amarket-bottom-left">参与人</div>
+                        <div class="amarket-bottom-right">
+                            <a href="javascript:;" class="partake-img"><img src="../../dist/img/project_pic2_03.jpg" width="40" height="40"/><i class="fa fa-close partake-i"></i></a>
+                            <a href="javascript:;" class="partake-img"><img src="../../dist/img/project_pic2_05.jpg" width="40" height="40"/><i class="fa fa-close partake-i"></i></a>
+                            <a href="javascript:;" class="partake-img"><img src="../../dist/img/project_pic1_07.jpg" width="40" height="40"/><i class="fa fa-close partake-i"></i></a>
+                            <a href="javascript:;" class="add-partake"><img src="../../dist/img/project_pic1_09.jpg" width="40" height="40"/></a>
+                        </div>
+                    </div>
+                    <div class="amarket-subtask clearfix">
+                        <div class="amarket-bottom-left">检查项
+                        </div>
+                        <div class="amarket-bottom-right" id="subtask">
+                            <div class="subtask-bar"><div class="sub-bar"></div></div>
+                            <div class="task-item" style="margin-top:0px;">
+                                <div class="task-item-wrapper">
+                                    <div class="task-item-check">
+                                        <a href="javascript:;" class="task-check"><input type="checkbox"/> </a>
+                                    </div>
+                                    <div class="task-item-title">拆分细节</div>
+                                    <!-- <div class="task-item-metadata">
+                                        <span class="task-due"><i class="fa fa-clock-o">12月1日</i></span>
+                                        <a href="javascript:;" class="task-img"><img src="../../dist/img/project_pic1_07.jpg" width="30" height="30"/> </a>
+                                    </div>
+                                    <div class="task-item-go-icon">
+                                        <i class="fa fa-angle-right"></i>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="task-item" style="margin-top:0px;">
+                                <div class="task-item-wrapper">
+                                    <div class="task-item-check">
+                                        <a href="javascript:;" class="task-check"><input type="checkbox"/> </a>
+                                    </div>
+                                    <div class="task-item-title">拆分细节</div>
+                                    <!-- <div class="task-item-metadata">
+                                        <span class="task-due"><i class="fa fa-clock-o">12月1日</i></span>
+                                        <a href="javascript:;" class="task-img"><img src="../../dist/img/project_pic1_07.jpg" width="30" height="30"/> </a>
+                                    </div>
+                                    <div class="task-item-go-icon">
+                                        <i class="fa fa-angle-right"></i>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="task-item" style="margin-top:0px;">
+                                <div class="task-item-wrapper">
+                                    <div class="task-item-check">
+                                        <a href="javascript:;" class="task-check"><input type="checkbox"/> </a>
+                                    </div>
+                                    <div class="task-item-title">拆分细节</div>
+                                    <!-- <div class="task-item-metadata">
+                                        <span class="task-due"><i class="fa fa-clock-o">12月1日</i></span>
+                                        <a href="javascript:;" class="task-img"><img src="../../dist/img/project_pic1_07.jpg" width="30" height="30"/> </a>
+                                    </div>
+                                    <div class="task-item-go-icon">
+                                        <i class="fa fa-angle-right"></i>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <a href="javascript:;" class="sub-task-new">添加检查项</a>
+                            <div class="add-subtask">
+                                <textarea class="subtask-text" placeholder="添加检查项"></textarea>
+                                <button class="btn btn-success">保存</button>
+                                <button class="btn btn-default">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="amarket-label clearfix">
+                        <div class="amarket-bottom-left">计划</div>
+                        <div class="amarket-bottom-right">
+                            计划周期：周、月、其他
+                            
+                        </div>
+                    </div>
+
+                    <div class="amarket-subtask clearfix">
+                        <div class="amarket-bottom-left">子任务<br>
+                        	<button type="button" class="btn bg-olive" style="padding:1px;float:right;">选择职责</button>
+                        </div>
+                        <div class="amarket-bottom-right" id="subtask2">
+                            <!-- <div class="subtask-bar"><div class="sub-bar"></div></div> -->
+                            <div class="task-item">
+                                <div class="task-item-wrapper">
+                                    <div class="task-item-check">
+                                        <!-- <a href="javascript:;" class="task-check"><input type="checkbox"/> </a> -->
+                                    </div>
+                                    <div class="task-item-title">细分职责1</div>
+                                    <div class="task-item-metadata">
+                                        <span class="task-due"><i class="fa fa-clock-o">12月1日</i></span>
+                                        <a href="javascript:;" class="task-img"><img src="../../dist/img/project_pic1_07.jpg" width="30" height="30"/> </a>
+                                    </div>
+                                    <!-- <div class="task-item-go-icon">
+                                        <i class="fa fa-angle-right"></i>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-item-wrapper">
+                                    <div class="task-item-check">
+                                        <!-- <a href="javascript:;" class="task-check"><input type="checkbox"/> </a> -->
+                                    </div>
+                                    <div class="task-item-title">细分职责2</div>
+                                    <div class="task-item-metadata">
+                                        <span class="task-due"><i class="fa fa-clock-o">12月1日</i></span>
+                                        <a href="javascript:;" class="task-img"><img src="../../dist/img/project_pic2_03.jpg" width="30" height="30"/> </a>
+                                    </div>
+                                    <!-- <div class="task-item-go-icon">
+                                        <i class="fa fa-angle-right"></i>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-item-wrapper">
+                                    <div class="task-item-check">
+                                        <!-- <a href="javascript:;" class="task-check"><input type="checkbox"/> </a> -->
+                                    </div>
+                                    <div class="task-item-title">细分职责3</div>
+                                    <div class="task-item-metadata">
+                                        <span class="task-due"><i class="fa fa-clock-o">12月1日</i></span>
+                                        <a href="javascript:;" class="task-img"><img src="../../dist/img/project_pic2_05.jpg" width="30" height="30"/> </a>
+                                    </div>
+                                    <!-- <div class="task-item-go-icon">
+                                        <i class="fa fa-angle-right"></i>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <a href="javascript:;" class="sub-task-new2">添加子任务</a>
+                            <div class="add-subtask2">
+                                <textarea class="subtask-text2" placeholder="添加子任务"></textarea>
+                                <button class="btn btn-success">保存</button>
+                                <button class="btn btn-default">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="amarket-enclosure clearfix">
+                        <div class="amarket-bottom-left">附件</div>
+                        <div class="amarket-bottom-right">
+                            <img src="../../dist/img/project_pic4_03.jpg"/><br/>
+                            <img src="../../dist/img/project_pic4_06.jpg"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="amarketing-right">
+                <div class="card-sidebar">
+                    <div class="task-num">
+                        <span class="task-num-number">任务编号：</span>
+                        <span class="num">2275</span>
+                        <i class="fa fa-unlock-alt" title="已锁定"></i>
+                    </div>
+                    <div class="card-widget">
+                        <div class="task-comment"><i class="fa fa-comment-o" style="padding:0 5px;"></i>评论</div>
+                        <div class="comment-item">
+                            <div class="comment-img"><img src="../../dist/img/project_pic2_03.jpg" width="36"height="36"/> </div>
+                            <div class="comment-meta">
+                                <a href="javascript:;" class="comment-remove"><i class="fa fa-trash-o"></i></a>
+                                <a href="javascript:;" class="comment-user">楚士通</a>
+                                <span class="comment-time">12月26日 11:25</span>
+                            </div>
+                            <div class="comment-content">供货商的观点是法国供货商的观点是法国供货商的观点是法国供货商的观点是法国</div>
+                        </div>
+                        <div class="add-comment" id="comment">
+                            <textarea placeholder="评论内容" class="comment-text"></textarea>
+                            <button class="btn btn-success comment-senter">发送</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery 2.2.3 -->
+<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!--aside.js-->
+<script src="../../dist/js/aside.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<!--<script src="../../plugins/datatables/dataTables.bootstrap.zh-CN.js"></script>-->
+<!-- SlimScroll -->
+<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../plugins/fastclick/fastclick.js"></script>
+<!--datepacker-->
+<script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="../../plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
+<!-- Select2 -->
+<script src="../../plugins/select2/select2.full.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<script>
+    $(function(){
+//        滚动条
+        (function(){
+            var mainlevel=$('div.main-leve1');
+            var contentBox=$('div.content-box');
+            //                获得sesction的宽度
+            var content=$('section.content').width();
+//            设置高度
+            var borHeight=document.documentElement.clientHeight-contentBox.offset().top;
+            contentBox.css('height',borHeight+'px');
+//            设置宽度
+            var main_level=$('div.project-main').find('div.main-leve1');
+            var main_level_length=main_level.length;
+            var allwidth=0;
+            for(var i=0;i<main_level_length;i++){
+                allwidth+=parseFloat(main_level.eq(i).outerWidth(true))
+            }
+            $('div.project-main').css('width',50+allwidth+'px');
+            var scrollright=50+allwidth-content;
+//            窗口改变
+            window.onresize=window.onscroll=function(){
+//                设置滚动条位置
+                var borHeight=document.documentElement.clientHeight-contentBox.offset().top;
+                contentBox.css('height',borHeight+'px');
+//                获得sesction的宽度
+                content=$('section.content').width();
+                scrollright=50+allwidth-content;
+            };
+//            滚动条控制
+            var n=0;
+            contentBox.on("mousewheel DOMMouseScroll", function (e) {
+                var delta = (e.originalEvent.wheelDelta && (e.originalEvent.wheelDelta > 0 ? 1 : -1)) ||  // chrome & ie
+                        (e.originalEvent.detail && (e.originalEvent.detail > 0 ? -1 : 1));              // firefox
+                if (delta > 0) {
+                    if(n<=0){
+                        n=0;
+                    }else{
+                        n-=50;
+                    };
+                } else if (delta < 0) {
+                    if(n>=scrollright){
+                        n=scrollright;
+                    }else{
+                        n+=50;
+                    }
+                }
+                $(this).scrollLeft(n);
+            });
+//            在文本框上滚动无效
+            mainlevel.on("mousewheel DOMMouseScroll",function(){
+                return false;
+            });
+//            在文本框上拖动无效
+            mainlevel.mousedown(function(){
+                return false;
+            });
+//            按压拖动滚动条
+            contentBox.mousedown(function(ev){
+                $(this).css('cursor','pointer');
+                var _this=$(this);
+                var e1=ev.clientX;
+                $(document).mousemove(function(ev){
+                    var e2=ev.clientX;
+                    var c=e1-e2;
+                    if(c>0){
+                        if(n<=0){
+                            n=0;
+                        }else{
+                            n-=10;
+                        };
+                    }else{
+                        if(n>=scrollright){
+                            n=scrollright;
+                        }else{
+                            n+=10;
+                        }
+                    }
+                    e1=ev.clientX;
+                    _this.scrollLeft(n);
+                    return false;
+                });
+                $(document).mouseup(function(ev){
+                    _this.css('cursor','default');
+                      $(document).unbind("mousemove"); //移除mousemove
+                });
+            });
+
+            //        侧边栏中点击收起展开
+            $('i.slideToggle').click(function(){
+                if($(this).attr('data-status')=='true'){
+                    $(this).attr('data-status',false);
+                    this.className='fa fa-minus-square-o slideToggle';
+                    $(this).siblings('ul').slideDown(200);
+                }else{
+//                同级的ul收起
+                    $(this).attr('data-status',true);
+                    this.className='fa fa-plus-square-o slideToggle';
+                    $(this).siblings('ul').slideUp(200);
+                    var i_i=$(this).siblings('ul').find('i.slideToggle');
+//             同级ul下的ul也收起
+                    i_i.attr('data-status',true);
+                    for(var i=0;i<i_i.length;i++){
+                        i_i[i].className='fa fa-plus-square-o slideToggle';
+                    };
+                    $(this).siblings('ul').find('ul').slideUp(200);
+                };
+
+            });
+        })();
+
+        /*子任务模态框*/
+        (function(){
+//            更多
+            $('#list-active').click(function(ev){
+                ev.stopPropagation();
+                $(this).find('ul').toggle().click(function(ev){
+                    ev.stopPropagation();
+                });
+            });
+//            分配任务
+            (function(){
+                var titleShow=$('div.title-show');
+                var titleHide=$('div.title-hide');
+                var textarea=$('.title-hide-text');
+                $('input.title-check-input').on('click',function(){
+                    var check=this.checked;
+                    if(check){
+                        titleShow.css('text-decoration','line-through');
+                    }else{
+                        titleShow.css('text-decoration','none');
+                    }
+                });
+                titleShow.on('click',function(){
+                    var text=this.innerText;
+                    $(this).hide();
+                    titleHide.show();
+                    textarea.val(text).focus();
+                });
+                $('button.title-hide-save').click(function(){
+                    var text=textarea.val();
+                    titleShow.show().text(text);
+                    titleHide.hide();
+                });
+                $('button.title-hide-cancel').click(function(){
+                    titleShow.show();
+                    titleHide.hide();
+                });
+//                时间插件
+                $('.datepicker1').datepicker({
+                    language:"zh-CN",
+                    autoclose:true,
+                    format:'mm月dd日',
+                    todayHighlight:true
+                });
+            })();
+//            添加描述
+            (function(){
+                var addText=$('a.add-text');
+                var addMain=$('div.add-main');
+                var addTextarea=$('textarea.add-textarea');
+                addText.click(function(){
+                    if(addText.html()=='添加描述'){
+                        addTextarea.val('');
+                    }else{
+                        addTextarea.val(addText.html());
+                    }
+                    addMain.show();
+                    addTextarea.focus();
+                    $(this).hide();
+                });
+                $('button.add-btn-enter').click(function(){
+                    if(addTextarea.val()==''){
+                        alert('请填写描述');
+                        addTextarea.focus();
+                    }else{
+                        addText.show().text(addTextarea.val());
+                        addMain.hide();
+                        addText.show();
+                    };
+
+                });
+                $('button.add-btn-cancel').click(function(){
+                    addTextarea.val('');
+                    addMain.hide();
+                    addText.show();
+                });
+            })();
+//            标签/参与/子任务
+            (function(){
+//                删除标签
+                $('i.label-item-i').click(function(){
+                    $(this).parent().remove();
+                });
+//                删除人员
+                $('i.partake-i').click(function(){
+                    $(this).parent().remove();
+                });
+//                子任务
+                var taskInput=$('#subtask').find('input');
+                var taskTitle=$('div.task-item-title');
+                var subBar=$('#subtask').find('div.sub-bar');
+                var subtaskbaWidth=$('#subtask').find('div.subtask-bar').width();
+                var checkedNum= 0;
+                var allCheckedNum=taskInput.length;
+                var subBarWidth=0;
+                for(var i=0;i<allCheckedNum;i++){
+                    if(taskInput[i].checked){
+                        checkedNum++;
+                    }
+                };
+                subBarWidth=checkedNum/allCheckedNum*subtaskbaWidth;
+                subBar.animate({'width':subBarWidth},500);
+                taskInput.click(function(){
+                    checkedNum=0;
+                    var checked=this.checked;
+                    if(checked){
+                        $(this).parents('div.task-item-check').next().css('text-decoration','line-through');
+                    }else{
+                        $(this).parents('div.task-item-check').next().css('text-decoration','none');
+                    };
+                    for(var i=0;i<allCheckedNum;i++){
+                        if(taskInput[i].checked){
+                            checkedNum++;
+                        }
+                    };
+                    subBarWidth=(checkedNum/allCheckedNum)*subtaskbaWidth;
+                    subBar.animate({'width':subBarWidth},500);
+                });
+//                添加子任务
+                $('a.sub-task-new').click(function(){
+                    $('div.add-subtask').show();
+                    $('textarea.subtask-text').focus();
+                    $(this).hide();
+                });
+                $('div.add-subtask button').click(function(){
+                    $('div.add-subtask').hide();
+                    $('a.sub-task-new').show();
+                });
+                $('a.sub-task-new2').click(function(){
+                    $('div.add-subtask2').show();
+                    $('textarea.subtask-text2').focus();
+                    $(this).hide();
+                });
+                $('div.add-subtask2 button').click(function(){
+                    $('div.add-subtask2').hide();
+                    $('a.sub-task-new2').show();
+                });
+            })();
+            /*添加评论*/
+            (function(){
+                var comment=$('#comment');
+                var comment_i=comment.prev().find('i');
+                comment.find('button.comment-senter').click(function(){
+                    var text=comment.find('textarea.comment-text').val();
+                    if(text==''){
+                        return;
+                    };
+                    var date=new Date();
+                    var getMoth=date.getMonth()+1;
+                    var getDay=date.getDate();
+                    var getHours=date.getHours();
+                    var getMin=date.getMinutes();
+                    var str='<div class="comment-item"> ' +
+                            '<div class="comment-img"><img src="../../dist/img/project_pic2_03.jpg" width="36"height="36"/> </div> ' +
+                            '<div class="comment-meta"> ' +
+                            '<a href="javascript:;" class="comment-remove"><i class="fa fa-trash-o"></i></a> ' +
+                            '<a href="javascript:;" class="comment-user">楚士通</a> ' +
+                            '<span class="comment-time">'+ getMoth+'月'+getDay +'日 '+ getHours+':'+getMin +'</span> ' +
+                            '</div> ' +
+                            '<div class="comment-content">'+ text +'</div> ' +
+                            '</div>';
+                    comment.before(str);
+                    comment.find('textarea.comment-text').val('');
+                    //                删除评论
+                    comment_i=comment.prev().find('i');
+                    comment_i.click(function(){
+                        $(this).parents('div.comment-item').remove();
+                    });
+                });
+//                删除评论
+                comment_i.click(function(){
+                    $(this).parents('div.comment-item').remove();
+                });
+            })();
+        })();
+    })
+</script>
+</body>
+</html>

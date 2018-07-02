@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>智能电商运营系统</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap.css">
+    <!--select-->
+    <link rel="stylesheet" href="../../plugins/select2/select2.min.css"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .btn{ padding: 1px 3px;}
+        .modal .btn{padding:6px 12px;}
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <header class="main-header">
+    <!-- Logo -->
+    <a href="../../index2.html" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>IeCOS</b></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>智能电商运营系统</b></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+
+
+    </nav>
+</header>
+<!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+
+    </aside>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                用户管理
+                <small>advanced tables</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                <li><a href="#">用户管理</a></li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <div style="height:75px;padding-top:20px">
+                                <p class="col-md-4">
+                                    <strong class="col-md-4" style="line-height:34px; text-align:right;">账号：</strong>
+                                    <input type="text" placeholder="账号" class="col-md-5" style="height:34px;border:1px solid #cccccc;border-radius:4px;">
+                                </p>
+                                <p class="col-md-4">
+                                    <strong class="col-md-4" style="line-height:34px; text-align:right;">级别：</strong>
+                                    <select class="col-md-5" style="height:34px;border:1px solid #cccccc;border-radius:4px;" >
+                                        <option value="">全部</option>
+                                        <option value="0">默认</option>
+                                        <option value="1">一级</option>
+                                        <option value="2">二级</option>
+                                        <option value="3">三级</option>
+                                        <option value="4">四级</option>
+                                    </select>
+                                </p>
+                            </div>
+                            <a href="javascript:;" style="float: left;margin-left:5px;padding:6px 12px;" class="btn btn-primary" id="addname">添加用户</a>
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th class="bs-checkbox " style="width: 36px; " data-field="check" tabindex="0"><div class="th-inner "><input name="btSelectAll" type="checkbox"></div><div class="fht-cell"></div></th>
+                                    <th style="" data-field="accountName" tabindex="0"><div class="th-inner ">账号</div><div class="fht-cell"></div></th>
+                                    <th style="" data-field="name" tabindex="0"><div class="th-inner ">姓名</div><div class="fht-cell"></div></th>
+                                    <th style="" data-field="englishName" tabindex="0"><div class="th-inner ">英文名</div><div class="fht-cell"></div></th>
+                                    <th style="" data-field="phone" tabindex="0"><div class="th-inner ">手机号</div><div class="fht-cell"></div></th>
+                                    <th style="" data-field="email" tabindex="0"><div class="th-inner ">邮箱</div><div class="fht-cell"></div></th>
+                                    <th style="" data-field="roleName" tabindex="0"><div class="th-inner ">角色</div><div class="fht-cell"></div></th>
+                                    <th style="" data-field="rank" tabindex="0"><div class="th-inner ">级别</div><div class="fht-cell"></div></th>
+                                    <th style="" data-field="update" tabindex="0"><div class="th-inner ">操作</div><div class="fht-cell"></div></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input data-index="0" name="btSelectItem" type="checkbox"></td>
+                                        <td style="">zhaoyi</td>
+                                        <td style="">赵毅</td>
+                                        <td style="">zhaoyi</td>
+                                        <td style=""></td>
+                                        <td style=""></td>
+                                        <td style="">猫超OS运营审核人员</td>
+                                        <td style="">1</td>
+                                        <td style=""><button ind="0" brands="null" rank="1" class="btn btn-success updateUser"
+                                        >修改信息</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="bs-checkbox "><input data-index="1" name="btSelectItem" type="checkbox"></td>
+                                        <td style="">linwenfa</td>
+                                        <td style="">林文发</td>
+                                        <td style="">linwenfa</td>
+                                        <td style=""></td>
+                                        <td style=""></td>
+                                        <td style="">猫超OS运营审核人员</td>
+                                        <td style="">1</td>
+                                        <td style=""><button ind="1" brands="null" rank="1" class="btn btn-success updateUser">修改信息</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="bs-checkbox "><input data-index="1" name="btSelectItem" type="checkbox"></td>
+                                        <td style="">mcyy</td>
+                                        <td style="">猫超运营演示</td>
+                                        <td style="">mcyy</td>
+                                        <td style=""></td>
+                                        <td style=""></td>
+                                        <td style="">猫超OS运营审核人员</td>
+                                        <td style="">0</td>
+                                        <td style=""><button ind="1" brands="null" rank="1" class="btn btn-success updateUser">修改信息</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="bs-checkbox "><input data-index="1" name="btSelectItem" type="checkbox"></td>
+                                        <td style="">liuwanpeng</td>
+                                        <td style="">刘万鹏</td>
+                                        <td style="">liuwanpeng</td>
+                                        <td style=""></td>
+                                        <td style=""></td>
+                                        <td style="">猫超OS运营审核人员</td>
+                                        <td style="">1</td>
+                                        <td style=""><button ind="1" brands="null" rank="1" class="btn btn-success updateUser">修改信息</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 2.3.6
+        </div>
+        <strong>Copyright &copy; 2014-2016 <a href="http://www.runhemei.com" target="_blank">北京润合美</a>.</strong> All rights
+        reserved.
+    </footer>
+    <!-- 修改信息 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">修改用户信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div style="margin-bottom:10px;">
+                            <label  for="name">级别：</label>
+                            <select id="rank1">
+                                <option value="">请选择</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <label  >品牌：</label>
+                        <select class="selectpicker show-tick select2" multiple="multiple"  id="brandSelect"  data-live-search="true" style="width:300px;">
+                            <option value="全部">全部</option>
+                            <option value="全部1">全部1</option>
+                            <option value="全部2">全部2</option>
+                            <option value="全部3">全部3</option>
+                            <option value="全部4">全部4</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-success" value="" id="updateUser">保存</button>
+                    <!-- <button type="button" class="btn btn-success" id="updateUser">保存</button> -->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- 添加用户 -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:800px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <button type="button" class="btn btn-primary" id="userAdd">添加</button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-striped"  id="StockListTable1">
+                        <thead>
+                        <tr>
+                            <th class="bs-checkbox " style="width: 36px; " data-field="check" tabindex="0"><div class="th-inner "><input name="btSelectAll" type="checkbox"></div><div class="fht-cell"></div></th>
+                            <th style="" data-field="account_name" tabindex="0"><div class="th-inner ">账号</div><div class="fht-cell"></div></th>
+                            <th style="" data-field="name" tabindex="0"><div class="th-inner ">姓名</div><div class="fht-cell"></div></th>
+                            <th style="" data-field="english_name" tabindex="0"><div class="th-inner ">英文名</div><div class="fht-cell"></div></th>
+                            <th style="" data-field="rName" tabindex="0"><div class="th-inner ">角色</div><div class="fht-cell"></div></th>
+                            <th style="" data-field="create_date1" tabindex="0"><div class="th-inner ">创建日期</div><div class="fht-cell"></div></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><input data-index="0" name="btSelectItem" type="checkbox"></td>
+                            <td style="">liuxuechao</td>
+                            <td style="">刘雪超</td>
+                            <td style="">liuxuechao</td>
+                            <td style="">猫超OS平台采购人员</td>
+                            <td style="">2016-12-28</td>
+                        </tr>
+                        <tr>
+                            <td><input data-index="0" name="btSelectItem" type="checkbox"></td>
+                            <td style="">mccg</td>
+                            <td style="">猫超采购演示</td>
+                            <td style="">mccg</td>
+                            <td style="">猫超OS平台采购人员</td>
+                            <td style="">2016-12-13</td>
+                        </tr>
+                        <tr>
+                            <td><input data-index="0" name="btSelectItem" type="checkbox"></td>
+                            <td style="">mcyy</td>
+                            <td style="">猫超运营演示</td>
+                            <td style="">mcyy</td>
+                            <td style="">猫超OS平台采购人员</td>
+                            <td style="">2016-12-13</td>
+                        </tr>
+                        <tr>
+                            <td><input data-index="0" name="btSelectItem" type="checkbox"></td>
+                            <td style="">qiushi</td>
+                            <td style="">邱实</td>
+                            <td style="">qiushi</td>
+                            <td style="">猫超OS平台采购人员</td>
+                            <td style="">2016-12-12</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                     <button type="button" class="btn btn-success" id="updateAdd">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- jQuery 2.2.3 -->
+    <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <!--aside.js-->
+    <script src="../../dist/js/aside.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!--select2-->
+    <script src="../../plugins/select2/select2.min.js"/>
+    <!-- FastClick -->
+    <script src="../../plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+    <script>
+        $(function () {
+            //$("#example2").DataTable();
+            $('#example1').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true
+            });
+            $(".select2").select2();
+            $('button.updateUser').click(function(){
+                $('#myModal').modal('show');
+            });
+            $('#addname').click(function(){
+                $('#myModal1').modal('show');
+            });
+        });
+    </script>
+</body>
+</html>

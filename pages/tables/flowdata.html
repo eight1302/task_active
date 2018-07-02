@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>智能电商运营系统</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <style type="text/css">
+  .btn{ padding: 1px 3px;}
+  </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../../index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>IeCOS</b></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>智能电商运营系统</b></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        流程数据统计
+        <small>advanced tables</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a href="#">流程数据统计</a></li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="row">
+
+        <div class="col-xs-12">
+
+
+          <div class="box">
+            <!-- <div class="box-header">
+              <h3 class="box-title">Data Table With Full Features</h3>
+            </div> -->
+            <!-- /.box-header -->
+            <div class="box-body">
+
+              <div class="row-fluid"  id="div-advanced-search">
+                    <form class="form-inline well"  role="form">
+                      <!-- <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="status-search">所属项目:</label>
+                        <select class="input-small" id="status-search" style="width:162px;height:34px;border:1px solid #d2d6de;">
+                            <option value ="">猫超201611月运营</option>
+                            <option value ="">猫超201612月运营</option>
+                            <option value ="">猫超OS平台开发</option>
+                        </select>
+                      </div> -->
+                      <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="status-search">所属流程:</label>
+                        <select class="input-small" id="status-search" style="width:162px;height:34px;border:1px solid #d2d6de;">
+                            <option value ="">猫超业务</option>
+                            <option value ="0">＋运营类</option>
+                            <option value ="1">＋＋品牌对接</option>
+                            <option value ="1">＋＋物流对接</option>
+                            <option value ="1">＋＋财物对接</option>
+                            <option value ="0">＋采购类</option>
+                            <option value ="0">＋美工类</option>
+                        </select>
+                      </div>
+                      <!-- <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="content-search">负&nbsp;&nbsp;责&nbsp;&nbsp;人&nbsp;:</label>
+                          <input type="text" class="form-control"  id="content-search" placeholder="负责人" style="width:161px;">
+                      </div>
+                      <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="status-search">任务类别:</label>
+                        <select class="input-small" id="status-search" style="width:162px;height:34px;border:1px solid #d2d6de;">
+                            <option value ="">日常运营</option>
+                            <option value ="0">报活动</option>
+                            <option value ="1">其他</option>
+                        </select>
+                      </div> -->
+                      <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="createdtime-search">开始日期:</label>
+                          <input type="date" class="form-control" id="createdtime-search" placeholder="创建日期">
+                      </div>
+                      <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="endtime-search">结束日期:</label>
+                          <input type="date" class="form-control" id="endtime-search" placeholder="结束日期">
+                      </div>
+                      <!-- <div class="form-group" style="margin-right: 10px">
+                          <label class="" for="status-search">任务状态:</label>
+                        <select class="input-small" id="status-search" style="width:162px;height:34px;border:1px solid #d2d6de;">
+                            <option value ="">全部</option>
+                            <option value="0">未开始</option>
+                            <option value ="1">执行中</option>
+                        </select>
+                      </div> -->
+                      <div class="form-group" style="margin-right: 10px">
+                        <button type="button" class="btn" id="btn-advanced-search"><i class="fa fa-search"></i> 查询</button>
+                      </div>
+                  </form>
+<button type="button" class="btn btn-lg btn-success" style="position:absolute;right:600px;z-index:100;"  data-toggle="modal" data-target="#addDuty" id="addDutyBtn">按人统计</button>
+<button type="button" class="btn btn-lg btn-success" style="position:absolute;right:500px;z-index:100;"  data-toggle="modal" data-target="#addDuty" id="addDutyBtn">按项目统计</button>
+<button type="button" class="btn btn-lg btn-success" style="position:absolute;right:400px;z-index:100;"  data-toggle="modal" data-target="#addDuty" id="addDutyBtn">按流程统计</button>
+<button type="button" class="btn btn-lg btn-success" style="position:absolute;right:300px;z-index:100;"  data-toggle="modal" data-target="#addDuty" id="addDutyBtn">按月统计</button>
+              </div>
+
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>发起人</th>
+                  <th>职责类别</th>
+                  <th>任务名称&要求</th>
+                  <th>开始-截止日期</th>
+                  <th>完成时间</th>
+                  <th>完成度</th>
+                  <th>状态</th>
+                  <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>本人</td>
+                  <td>猫超业务</td>
+                  <td><a href="">［露得清］数据分析20161123</a>
+                    <button type="button" class="btn bg-olive ">要求</button></td>
+                  <td>11-23 ~ 11-23 </td>
+                  <td>～</td>
+                  <td>0%</td>
+                  <td>未开始(本人创建)</td>
+                  <td>
+                    <button type="button" class="btn">修改</button>
+                    <button type="button" class="btn">开始</button>
+                    <button type="button" class="btn bg-olive" onclick="window.open('task_split.html','_self');">分拆</button>
+                    <!-- <button type="button" class="btn">事件</button> --></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>[润合美]领导</td>
+                  <td>猫超业务</td>
+                  <td><a href="">［露得清］数据分析20161123</a>
+                    <button type="button" class="btn bg-olive ">要求</button></td>
+                  <td>11-23 ~ 11-23 </td>
+                  <td>～</td>
+                  <td>0%</td>
+                  <td>未开始(非本人创建)</td>
+                  <td>
+                    <button type="button" class="btn">退回</button>
+                    <button type="button" class="btn">开始</button>
+                    <button type="button" class="btn bg-olive" onclick="window.open('task_split.html','_self');">分拆</button>
+                    <!-- <button type="button" class="btn">事件</button> --></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>本人</td>
+                  <td>猫超业务</td>
+                  <td><a href="">［露得清］数据分析20161123</a>
+                    <button type="button" class="btn bg-olive ">要求</button></td>
+                  <td>11-23 ~ 11-23 </td>
+                  <td>～</td>
+                  <td>0%</td>
+                  <td>执行中(未分拆)</td>
+                  <td>
+                    <button type="button" class="btn bg-olive" onclick="window.open('task_split.html','_self');">分拆</button>
+                    <button type="button" class="btn">反馈</button></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>本人</td>
+                  <td>猫超业务</td>
+                  <td><a href="">［露得清］数据分析20161123</a>
+                    <button type="button" class="btn bg-olive ">要求</button></td>
+                  <td>11-23 ~ 11-23 </td>
+                  <td>～</td>
+                  <td>60%</td>
+                  <td>分拆执行中(已分拆)</td>
+                  <td>
+                    <button type="button" class="btn bg-olive" onclick="window.open('task_split.html','_self');">分拆</button>
+                    <button type="button" class="btn">反馈</button>
+                    <button type="button" class="btn">子任务</button></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>本人</td>
+                  <td>猫超业务</td>
+                  <td><a href="">［露得清］数据分析20161122</a>
+                    <button type="button" class="btn bg-olive ">要求</button></td>
+                  <td>11-22 ~ 11-22 </td>
+                  <td>11-22 14:33:55</td>
+                  <td>100%</td>
+                  <td>已完成(已分拆)</td>
+                  <td>
+                    <button type="button" class="btn">子任务</button></td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>本人</td>
+                  <td>猫超业务</td>
+                  <td><a href="">［露得清］数据分析20161122</a>
+                    <button type="button" class="btn bg-olive ">要求</button></td>
+                  <td>11-22 ~ 11-22 </td>
+                  <td>11-22 14:33:55</td>
+                  <td>100%</td>
+                  <td>已完成(未分拆)</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>本人</td>
+                  <td>猫超业务</td>
+                  <td><a href="">［露得清］数据分析20161122</a>
+                    <button type="button" class="btn bg-olive ">要求</button></td>
+                  <td>11-22 ~ 11-22 </td>
+                  <td>~</td>
+                  <td>~</td>
+                  <td>已中止／已退回</td>
+                  <td></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.3.6
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="http://www.runhemei.com" target="_blank">北京润合美</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 2.2.3 -->
+<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!--aside.js-->
+<script src="../../dist/js/aside.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    //$("#example2").DataTable();
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>会员基本信息管理</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../dist/css/bootstrap-switch.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../../index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>R</b>HM</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>润合美</b>村淘合伙人</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+       		<li><a href="javascript:void(0);" id="logout1" >退出</a></li>
+       	</ul>
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+          
+          <!-- Notifications: style can be found in dropdown.less -->
+          
+          <!-- Tasks: style can be found in dropdown.less -->
+          
+          <!-- User Account: style can be found in dropdown.less -->
+          
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        <li class="header">导航</li>
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>会员基本信息</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="score.html">
+            <i class="fa fa-edit"></i> 
+            <span>积分排名</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="scorerecord.html">
+            <i class="fa fa-table"></i> 
+            <span>积分明细</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        <!-- <li class="treeview">
+           <a href="#">
+            <i class="fa fa-files-o"></i> 
+            <span>积分管理</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="score.html"><i class="fa fa-circle-o"></i>积分排名</a></li>
+            <li><a href="scorerecord.html"><i class="fa fa-circle-o"></i>积分明细</a></li>
+          </ul>
+        </li>-->
+        <li> 
+          <a href="activity.html">
+            <i class="fa fa-th"></i> 
+            <span>活动管理</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="log.html">
+            <i class="fa fa-pie-chart"></i>
+            <span>操作日志</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="feedback.html">
+            <i class="fa fa-laptop"></i>
+            <span>意见反馈</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        <!-- <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> 
+            <span>个人资料</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-table"></i> 
+            <span>短信管理</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="pages/calendar.html">
+            <i class="fa fa-calendar"></i> 
+            <span>权限管理</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="pages/mailbox/mailbox.html">
+            <i class="fa fa-envelope"></i> 
+            <span>系统管理</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>-->
+
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+ 
+
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 2.2.3 -->
+<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<script src="../../dist/js/bootstrap-switch.min.js"></script>
+<script src="../../plugins/handlebars-v3.0.1.js"></script>
+<script type="text/javascript" src="../../../js/ajaxfileupload.js"></script>
+<script src="../../dist/js/common.js"></script>
+<!--定义操作列按钮模板-->
+
+<!-- page script -->
+<!--定义操作列按钮模板-->
+<script id="tpl" type="text/x-handlebars-template">
+    {{#each func}}
+    <button type="button" class="btn btn-{{this.type}} btn-sm" onclick="{{this.fn}}">{{this.name}}</button>
+    {{/each}}
+</script>
+
+<script>
+    var table;
+    var editFlag = false;
+    $(function () {
+        //$('#start_date').datetimepicker();
+
+        var tpl = $("#tpl").html();
+        //预编译模板
+        var template = Handlebars.compile(tpl);
+
+        table = $('#example').DataTable({
+            ajax: {
+                url: context_path+"admin/membermanage/memberlist",
+                type: "POST",
+                data: function(d){
+                	  d.name = $('#name-search').val()
+                	  d.taobaocode = $('#taobaocode-search').val()
+                	  d.phonenumber = $('#phonenumber-search').val()
+                	  d.address = $('#address-search').val()
+                	  d.groupstatus = $('#groupstatus-search').val()
+                	  d.status = $('#status-search').val()
+                }
+            },
+            serverSide: true,
+            searching: false ,   //禁用原生搜索
+            order: [],          //取消默认排序查询,否则复选框一列会出现小箭头
+            columns: [
+				{ //复选框单元格
+				    className: "td-checkbox",
+				    orderable: false,
+				    width: "30px",
+				    data: null,
+				    render: function (data, type, row, meta) {
+				        return '<input type="checkbox" value='+row.id+' class="iCheck">';
+				    }
+				},
+                {"data": "id",orderable: false},
+                {"data": "name",orderable: false},
+                {"data": "taobaocode",orderable: false},
+                {"data": "phonenumber",orderable: false},
+                {"data": "address",orderable: false},
+                {"data": "groupStatusStr",orderable: false},
+                {"data": "statusStr",orderable: false}
+            ],
+            columnDefs: [
+                {
+                    targets: 8,
+                    render: function (a, b, c, d) {//data, type, row, meta
+                        var context =
+                        {
+                            func: [
+                                {"name": "修改", "fn": "edit(\'"+ c.id + "\',\'"  + c.name + "\',\'" + c.taobaocode + "\',\'" + c.phonenumber + "\',\'" + c.address + "\',\'" + c.groupstatus + "\',\'" + c.status + "\')", "type": "primary"}
+                                //,
+                                //{"name": "删除", "fn": "del(\'" + c.id + "\')", "type": "danger"}
+                            ]
+                        };
+                        var html = template(context);
+                        return html;
+                    }
+                }
+
+            ],
+            "language": {
+                "lengthMenu": "每页 _MENU_ 条记录",
+                "zeroRecords": "没有找到记录",
+                "info": "第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
+                "infoEmpty": "无记录",
+                "sSearch":  "<b>模糊搜索</b>：",
+                "infoFiltered": "(从 _MAX_ 条记录过滤)",
+                "paginate": {
+                    "previous": "上一页",
+                    "next": "下一页"
+                },
+           		"sEmptyTable":     "没有找到记录",
+            	"sLoadingRecords": "载入中..."
+            },
+            "dom": "<'row'<'col-xs-2'l><'#mytool.col-xs-4'><'col-xs-6'f>r>" + "t" +"<'row'<'col-xs-6'i><'col-xs-6'p>>",
+            initComplete: function () {
+                $("#mytool").append('<button type="button" id="addButton" class="btn btn-primary btn-sm" style="margin-right:10px" data-toggle="modal" data-target="#myModal">添加</button>');
+                
+                $("#mytool").append('<button id="datainit" type="button" class="btn btn-info btn-sm">导入会员基本信息</button>&nbsp');
+                $("#datainit").on("click", importData);
+                $("#addButton").click(function(){
+                	editFlag=false;
+                	$("#myModalLabel").html("新增");
+                	$("#id").val("");
+                	$("#name").val("");
+                    $("#taobaocode").val("");
+                    $("#phonenumber").val("");
+                    $("#address").val("");
+                    $("#groupstatus").val("0");
+                    $("#status").val("0");
+                    
+                    $("#taobaocode").removeAttr("disabled");
+                    $("#phonenumber").removeAttr("disabled");
+                    
+                });
+            }
+        });
+        $("#save").click(add);
+        $("#initData").click(initSingleData);
+        $("#btn-advanced-search").click(function(){
+        	table.ajax.reload();
+        })
+       	$("#file-import").change(function(){
+           	console.log(1);
+           	if($("#file-import").val() != ""){
+       			$.ajaxFileUpload({
+       				url :context_path+'admin/membermanage/importuserbaseInfo',
+       				secureuri : false,
+       				type:"POST",
+       				data: {fileName:encodeURI($("#file-import").val())}, 
+       				fileElementId : 'file-import',
+       				dataType : 'json',
+       				success : function(data, status) {
+       					console.log("data:"+data);
+       					//imgurlnew=data.data;
+       					alert("上传成功");
+       					//$("#file-import").val("");
+       					$("#myModal2").modal("hide");
+       					table.ajax.reload(null,false)
+       				},
+       				error : function(data, status, e) {
+       					alert("上传异常");
+       				}
+       			});
+       		}
+        })
+    });
+    
+    function importData(){
+    	$("#myModal2").modal("show");
+    }
+
+    /**
+     * 初始化基础数据
+     */
+    function initData() {
+        var flag = confirm("本功能将添加数据到数据库，你确定要添加么？");
+        if (flag) {
+            $.get("/objects.txt", function (data) {
+                var jsondata = JSON.parse(data);
+                $(jsondata.data).each(function (index, obj) {
+                    ajax(obj);
+                });
+            });
+        }
+    }
+
+    /**
+     * 初始化基础数据
+     */
+    function initSingleData() {
+        $("#name").val("http://dt.thxopen.com");
+        $("#position").val("ShiMen");
+        $("#salary").val("1");
+        $("#start_date").val("2015/04/01");
+        $("#office").val("Home");
+        $("#extn").val("001");
+    }
+
+    /**
+     * 清除
+     */
+    function clear() {
+        $("#name").val("").attr("disabled",false);
+        $("#position").val("");
+        $("#salary").val("");
+        $("#start_date").val("");
+        $("#office").val("");
+        $("#extn").val("");
+        editFlag = false;
+    }
+
+    /**
+     * 添加数据
+     **/
+    function add() {
+    	//editFlag = false;
+    	if(!$("#name").val()){
+    		alert("姓名不能为空");
+    		return false;
+    	}
+    	if(!$("#taobaocode").val()){
+    		alert("旺旺号不能为空");
+    		return false;
+    	}
+		if(!$("#phonenumber").val()){
+			alert("手机号不能为空");
+			return false;
+    	}
+		if(!$("#address").val()){
+			alert("地址不能为空");
+			return false;
+    	}
+        var addJson = {
+        	"id":$("#id").val(),
+            "name": $("#name").val(),
+            "taobaocode": $("#taobaocode").val(),
+            "phonenumber": $("#phonenumber").val(),
+            "address": $("#address").val(),
+            "groupstatus": $("#groupstatus").val(),
+            "status": $("#status").val()
+        };
+        ajax(addJson);
+    }
+
+    /**
+     *编辑方法
+     **/
+    function edit(id,name,taobaocode,phonenumber,address,groupstatus,status) {
+        //console.log(name);
+        editFlag = true;
+        $("#myModalLabel").text("修改");
+        $("#id").val(id);
+        $("#name").val(name);//.attr("disabled",true);
+        $("#taobaocode").val(taobaocode);
+        $("#phonenumber").val(phonenumber);
+        $("#address").val(address);
+        $("#groupstatus").val(groupstatus);
+        $("#status").val(status);
+        $("#taobaocode").attr("disabled","disabled");
+        $("#phonenumber").attr("disabled","disabled");
+        
+        $("#myModal").modal("show");
+    }
+
+    function ajax(obj) {
+        var url = context_path+"admin/membermanage/createmember" ;
+        if(editFlag){
+            url = context_path+"admin/membermanage/updatemember";
+        }
+        $.ajax({
+            url:url ,
+            type:"POST",
+            data: {
+            	"id": obj.id,
+                "name": obj.name,
+                "taobaocode": obj.taobaocode,
+                "phonenumber": obj.phonenumber,
+                "address": obj.address,
+                "groupstatus": obj.groupstatus,
+                "status": obj.status
+            }, success: function (data) {
+                table.ajax.reload(null,false);
+                $("#myModal").modal("hide");
+                $("#myModalLabel").text("新增");
+                clear();
+                console.log("结果" + data);
+            }
+        });
+    }
+    /**
+     * 删除数据
+     * @param name
+     */
+    function del(id) {
+        $.ajax({
+            url: context_path+"admin/membermanage/deletemamber",
+            data: {
+                "id": id
+            }, success: function (data) {
+                table.ajax.reload();
+                console.log("删除成功" + data);
+            }
+        });
+    }
+</script>
+</body>
+</html>
+
+
+
+
